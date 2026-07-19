@@ -1,0 +1,31 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: enterprise_assistant
+      POSTGRES_USER: enterprise
+      POSTGRES_PASSWORD: enterprise_dev_password
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U enterprise -d enterprise_assistant"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    volumes: [postgres_data:/var/lib/postgresql/data]
+  api:
+    build: .
+    command: uvicorn backend.main:app --host 0.0.0.0 --port 8000
+    environment:
+      DATABASE_URL: postgresql+psycopg://enterprise:enterprise_dev_password@postgres/enterprise_assistant
+      JWT_SECRET: ${JWT_SECRET:-development-only-change-me}
+    ports: ["8000:8000"]
+    depends_on:
+      postgres: {condition: service_healthy}
+    volumes: [./uploads:/app/uploads, ./reports:/app/reports, ./data:/app/data]
+  frontend:
+    build: .
+    command: streamlit run app.py --server.address 0.0.0.0 --server.port 8501
+    environment: ["API_URL=http://api:8000"]
+    ports: ["8501:8501"]
+    depends_on: [api]
+volumes:
+  postgres_data:

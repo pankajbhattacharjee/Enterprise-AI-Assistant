@@ -1,0 +1,41 @@
+-- Reference schema. SQLAlchemy creates equivalent tables at API startup.
+CREATE TABLE users (
+  id BIGSERIAL PRIMARY KEY,
+  email VARCHAR(255) UNIQUE NOT NULL,
+  password_hash VARCHAR(255) NOT NULL,
+  role VARCHAR(30) NOT NULL DEFAULT 'employee',
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE documents (
+  id BIGSERIAL PRIMARY KEY,
+  filename VARCHAR(255) NOT NULL,
+  stored_path VARCHAR(500) NOT NULL,
+  uploaded_by BIGINT NOT NULL REFERENCES users(id),
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE chat_messages (
+  id BIGSERIAL PRIMARY KEY,
+  user_id BIGINT NOT NULL REFERENCES users(id),
+  question TEXT NOT NULL,
+  answer TEXT NOT NULL,
+  intent VARCHAR(30) NOT NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE reports (
+  id BIGSERIAL PRIMARY KEY,
+  filename VARCHAR(255) NOT NULL,
+  path VARCHAR(500) NOT NULL,
+  user_id BIGINT NOT NULL REFERENCES users(id),
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE sales (
+  id BIGSERIAL PRIMARY KEY,
+  customer VARCHAR(100) NOT NULL,
+  region VARCHAR(40) NOT NULL,
+  amount NUMERIC(12,2) NOT NULL,
+  sold_at DATE NOT NULL
+);

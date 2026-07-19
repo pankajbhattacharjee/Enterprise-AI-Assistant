@@ -1,0 +1,12 @@
+.env
+.venv/
+__pycache__/
+*.py[cod]
+enterprise_assistant.db
+uploads/*
+!uploads/.gitkeep
+reports/*
+!reports/.gitkeep
+data/*
+!data/.gitkeep
+.pytest_cache/

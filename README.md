@@ -28,15 +28,11 @@ Company knowledge is often scattered across policies, contracts, and business sy
 
 ## 📸 Screenshots
 
-> Add real product screenshots to `docs/images/` before publishing the repository. The names below are intentionally stable, so the README needs no changes when images are added.
+### Generated PDF Report
 
-| Area | Screenshot |
-| --- | --- |
-| Login | `docs/images/login.png` |
-| Chat interface | `docs/images/chat.png` |
-| Document upload | `docs/images/upload.png` |
-| Conversation history | `docs/images/history.png` |
-| Generated PDF report | `docs/images/report.png` |
+![Generated Enterprise Assistant PDF report](docs/images/pdf-report.png)
+
+Additional product screenshots can be added to `docs/images/` using the same pattern.
 
 ## 🛠 Tech Stack
 

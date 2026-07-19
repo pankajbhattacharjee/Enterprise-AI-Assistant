@@ -5,8 +5,8 @@ __pycache__/
 enterprise_assistant.db
 uploads/*
 !uploads/.gitkeep
-reports/*
-!reports/.gitkeep
+reports/*.pdf
+reports/.gitkeep
 data/*
 !data/.gitkeep
 .pytest_cache/

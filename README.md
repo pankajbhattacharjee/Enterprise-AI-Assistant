@@ -123,9 +123,9 @@ The UI is available at `http://localhost:8501`; the API and OpenAPI docs are ava
 
 Update these links after deployment:
 
-- Frontend: `https://your-enterprise-ai-assistant.example.com`
-- Backend API: `https://your-enterprise-ai-assistant-api.example.com`
-- API docs: `https://your-enterprise-ai-assistant-api.example.com/docs`
+- Frontend: `https://enterprise-ai-assistant-8z3g6yvmrkdsr7zkmwbep9.streamlit.app/`
+- Backend API: `https://enterprise-ai-assistant-pxc4.onrender.com/`
+- API docs: `https://enterprise-ai-assistant-pxc4.onrender.com/docs`
 
 ## API Overview
 

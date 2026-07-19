@@ -35,9 +35,16 @@ def initialise() -> None:
             connection.execute(text("INSERT INTO sales (id, customer, region, amount, sold_at) VALUES (1, 'Acme Ltd', 'North', 12500, '2026-06-04'), (2, 'Globex', 'South', 8700, '2026-06-15'), (3, 'Initech', 'North', 15300, '2026-07-02')"))
 
 
+@app.get("/")
+def home() -> dict:
+    """Simple root response for platform checks and human visitors."""
+    return {"status": "running", "message": "Enterprise AI Assistant API is live"}
+
+
 @app.get("/health")
 def health() -> dict:
-    return {"status": "ok", "environment": settings.app_env}
+    """Minimal liveness endpoint suitable for Render health checks."""
+    return {"status": "healthy"}
 
 
 @app.post("/api/auth/register", response_model=TokenResponse, status_code=status.HTTP_201_CREATED)

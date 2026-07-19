@@ -3,7 +3,8 @@ import httpx
 import streamlit as st
 
 st.set_page_config(page_title="Enterprise AI Assistant", page_icon="✦", layout="wide")
-API_URL = st.sidebar.text_input("API URL", value=os.getenv("API_URL", "http://localhost:8000"))
+BACKEND_URL = os.getenv("BACKEND_URL", "https://enterprise-ai-assistant-pxc4.onrender.com/").rstrip("/")
+API_URL = st.sidebar.text_input("API URL", value=BACKEND_URL)
 st.title("✦ Enterprise AI Assistant")
 
 

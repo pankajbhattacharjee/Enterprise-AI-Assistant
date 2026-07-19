@@ -111,6 +111,18 @@ flowchart TD
 
 Open `http://localhost:8501`, register an account, upload a document, and ask a question. Interactive OpenAPI documentation is available at `http://localhost:8000/docs`.
 
+### Deploy frontend and backend separately
+
+1. Deploy FastAPI and copy its public HTTPS URL.
+2. Set `CORS_ORIGINS` on the API service to the Streamlit site URL, for example `https://your-streamlit-app.streamlit.app`.
+3. Set `BACKEND_URL` in the Streamlit deployment’s secrets/environment to the FastAPI URL, for example:
+
+   ```toml
+   BACKEND_URL = "https://your-api.example.com"
+   ```
+
+4. Deploy the Streamlit app. It reads `BACKEND_URL` at startup; local development falls back to `http://localhost:8000`.
+
 ## Docker
 
 ```bash
